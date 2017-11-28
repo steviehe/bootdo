@@ -28,6 +28,7 @@ public class BlogController {
 	@ResponseBody
 	@GetMapping("/open/list")
 	// getMapping()注解相当于RequestMapping注解 , 并且method = get
+	// 测试
 	public PageUtils opentList(@RequestParam Map<String, Object> params) {
 		// 查询列表数据
 		Query query = new Query(params);
