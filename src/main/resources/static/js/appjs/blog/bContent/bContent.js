@@ -198,6 +198,9 @@ function add() {
 	});
 	layer.full(addPage);
 }
+function publish(){
+	alert("待开发。。。");
+}
 function edit(cid) {
 	var editPage = layer.open({
 		type : 2,
