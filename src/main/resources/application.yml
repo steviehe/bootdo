@@ -17,9 +17,15 @@ spring:
       max-request-size: 30Mb
   devtools:
     restart:
-      enabled: true    
+      enabled: true  
+  redis:
+    host: 192.168.1.112 
+    port: 6379
 mybatis: 
   configuration:
     map-underscore-to-camel-case: true
   mapper-locations: mybatis/**/*Mapper.xml
   typeAliasesPackage: com.bootdo.**.domain
+  
+ 
+  

@@ -116,26 +116,74 @@ public class ContentController extends BaseController {
 	@PostMapping("/remove")
 	@ResponseBody
 	public R remove(Long id) {
-		if (Constant.DEMO_ACCOUNT.equals(getUsername())) {
-			return R.error(1, "演示系统不允许修改,完整体验请部署程序");
-		}
-		if (bContentService.remove(id) > 0) {
+		try {
+			if (Constant.DEMO_ACCOUNT.equals(getUsername())) {
+				return R.error(1, "演示系统不允许修改,完整体验请部署程序");
+			}
+			ContentDO contentDO = new ContentDO();
+			contentDO.setCid(id);
+			contentDO.setStatus(3);
+			bContentService.update(contentDO);
 			return R.ok();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return R.error();
 		}
-		return R.error();
 	}
 
+//	/**
+//	 * 删除
+//	 */
+//	@RequiresPermissions("blog:bContent:batchRemove")
+//	@PostMapping("/batchRemove")
+//	@ResponseBody
+//	public R remove(@RequestParam("ids[]") Long[] cids) {
+//		if (Constant.DEMO_ACCOUNT.equals(getUsername())) {
+//			return R.error(1, "演示系统不允许修改,完整体验请部署程序");
+//		}
+//		bContentService.batchRemove(cids);
+//		return R.ok();
+//	}
 	/**
-	 * 删除
+	 * 批量博客文章下架
 	 */
 	@RequiresPermissions("blog:bContent:batchRemove")
 	@PostMapping("/batchRemove")
 	@ResponseBody
-	public R remove(@RequestParam("ids[]") Long[] cids) {
-		if (Constant.DEMO_ACCOUNT.equals(getUsername())) {
-			return R.error(1, "演示系统不允许修改,完整体验请部署程序");
-		}
-		bContentService.batchRemove(cids);
-		return R.ok();
+	public R batchupdateBlog(@RequestParam("ids[]") Long[] cids){
+		      try {
+		    	  ContentDO contentDO = new ContentDO();
+		    	  for (int i = 0; i < cids.length; i++) {
+						contentDO.setCid(cids[i]);
+						contentDO.setStatus(3);
+			    	  bContentService.update(contentDO);
+				}
+		    	  return R.ok();
+			} catch (Exception e) {
+				e.printStackTrace();
+				return R.error();
+			}
+		
 	}
+	/**
+	 * 批量发表博客
+	 */
+	@RequiresPermissions("blog:bContent:batchPublish")
+	@PostMapping("/batchPublish")
+	@ResponseBody
+	public R batchPublish(@RequestParam("ids[]") Long[] cids){
+	      try {
+	    	  ContentDO contentDO = new ContentDO();
+	    	  for (int i = 0; i < cids.length; i++) {
+					contentDO.setCid(cids[i]);
+					contentDO.setStatus(1);
+		    	  bContentService.update(contentDO);
+			}
+	    	  return R.ok();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return R.error();
+		}
+	
+}
 }

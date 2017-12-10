@@ -32,6 +32,8 @@ public class UserDO implements Serializable {
     private Date gmtModified;
     //角色
     private List<Long> roleIds;
+    //头像
+    private String headPhoto;
 
     /**
      * 设置：
@@ -190,6 +192,14 @@ public class UserDO implements Serializable {
 
     public void setroleIds(List<Long> roleIds) {
         this.roleIds = roleIds;
+    }
+
+    public String getHeadPhoto() {
+        return headPhoto;
+    }
+
+    public void setHeadPhoto(String headPhoto) {
+        this.headPhoto = headPhoto;
     }
 
     @Override

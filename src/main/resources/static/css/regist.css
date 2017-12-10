@@ -1,0 +1,112 @@
+body.regist{
+    background: #18c8f6;
+     height: auto;
+        background:url("../img/login-background.jpg") no-repeat center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        color: rgba(255,255,255,.95);
+}
+body{
+  overflow: hidden;
+  margin: 0;
+}
+.col-sm-4 {
+    width: 30.333333%;
+}
+.signinpanel {
+    width: 912px;
+    margin: 7% auto 0 auto;
+}
+.signinpanel .form-control {
+    display: block;
+}
+.signinpanel .uname {
+    background: #fff url(../img/user.png) no-repeat 95% center;color:#333;
+}
+
+.signinpanel .pword {
+    background: #fff url(../img/locked.png) no-repeat 95% center;color:#333;
+}
+.signinpanel .trueName {
+    background: #fff url(../img/user.png) no-repeat 95% center;color:#333;
+}
+.signinpanel .email {
+    background: #fff url(../img/user.png) no-repeat 95% center;color:#333;
+}
+
+
+
+.signinpanel.registContant{
+ margin-top: 15px;
+}
+
+.signinpanel .unameInpt{
+       margin-left: 96px;
+       margin-top: -23px;
+}
+.signinpanel .passInpt{
+       margin-left: 96px;
+     margin-top: -23px;
+}
+.signinpanel .pull-right{
+              cursor:pointer;
+            }
+.signinpanel .formMarginStyle{
+margin-top: 25px;
+}
+.signinpanel .btn {
+    margin-top: 15px;
+}
+.xingColor{
+   color:red;
+}
+.emailCheck{
+        margin-left: 315px;
+        margin-top: -49px;
+}
+
+.btn-send{
+	border: 1px solid #00a3ff;
+	background-color: #00A3FF;
+	color: #fff;
+	border-radius: 2px;
+}
+.btn-send:hover{
+	color: #fff;
+    background-color: #0097ee;
+    border: 1px solid #0097ee;
+}
+.btn-regist{
+
+}
+h3{
+  position: fixed;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  transform:translateY(-50%);
+  font-family: 'Love Ya Like A Sister', cursive;
+  font-size: 40px;
+  color: #c70012;
+  padding: 0 20px;
+}
+h3{
+  position: fixed;
+  top: 10%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  transform:translateY(-50%);
+  font-family: 'Love Ya Like A Sister', cursive;
+  font-size: 20px;
+  color: #c70012;
+  padding: 0 20px;
+}
+@media (min-width:1200px){
+  h3{
+    font-size: 60px;
+  }
+}

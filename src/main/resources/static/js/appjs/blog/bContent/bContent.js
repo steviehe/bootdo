@@ -125,6 +125,8 @@ function load() {
 											return '<span class="label label-danger">草稿</span>';
 										} else if (value == '1') {
 											return '<span class="label label-primary">发布</span>';
+										}else if (value == '3'){
+											  return '<span class="label label-warn">已下线</span>';
 										}
 									}
 								},
@@ -198,8 +200,36 @@ function add() {
 	});
 	layer.full(addPage);
 }
-function publish(){
-	alert("待开发。。。");
+function batchPublish(){
+	var rows = $('#exampleTable').bootstrapTable('getSelections'); // 返回所有选择的行，当没有选择的记录时，返回一个空数组
+	if (rows.length == 0) {
+		layer.msg("请选择要发表的博客");
+		return;
+	}
+	layer.confirm("小子！\n确定要干这种事情吗：发表选中的"+ rows.length + "条数据吗?",{btn : [ '确定', '取消' ]},function(){
+		    var ids=new Array();
+		 // 遍历所有选择的行数据，取每条数据对应的ID
+		    $.each(rows, function(i, row) {
+				ids[i] = row['cid'];
+			});
+		    $.ajax({
+				type : 'POST',
+				data : {
+					"ids" : ids
+				},
+				url : prefix + '/batchPublish',
+				success : function(r) {
+					if (r.code == 0) {
+						layer.msg(r.msg);
+						reLoad();
+					} else {
+						layer.msg(r.msg);
+					}
+				}
+			});
+	      }, function() {
+
+     });
 }
 function edit(cid) {
 	var editPage = layer.open({
@@ -241,10 +271,10 @@ function preview(id) {
 function batchRemove() {
 	var rows = $('#exampleTable').bootstrapTable('getSelections'); // 返回所有选择的行，当没有选择的记录时，返回一个空数组
 	if (rows.length == 0) {
-		layer.msg("请选择要删除的数据");
+		layer.msg("请选择要删除的博客");
 		return;
 	}
-	layer.confirm("确认要删除选中的'" + rows.length + "'条数据吗?", {
+	layer.confirm("确认要删除选中的" + rows.length + "条数据吗?", {
 		btn : [ '确定', '取消' ]
 	// 按钮
 	}, function() {

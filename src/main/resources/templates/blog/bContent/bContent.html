@@ -16,11 +16,11 @@
                         </button>
                         <button shiro:hasPermission="blog:bContent:batchRemove" type="button" class="btn  btn-danger"
                                 onclick="batchRemove()">
-                            <i class="fa fa-trash" aria-hidden="true"></i>删除
+                            <i class="fa fa-trash" aria-hidden="true"></i>批量下线
                         </button>
-                        <button shiro:hasPermission="blog:bContent:add" type="button" class="btn  btn-primary"
-                                onclick="publish()">
-                            <i class="fa fa-plus" aria-hidden="true"></i>发表
+                        <button shiro:hasPermission="blog:bContent:batchPublish" type="button" class="btn  btn-primary"
+                                onclick="batchPublish()">
+                            <i class="fa fa-plus" aria-hidden="true"></i>批量发表
                         </button>
                     </div>
                     <div class="columns pull-right">

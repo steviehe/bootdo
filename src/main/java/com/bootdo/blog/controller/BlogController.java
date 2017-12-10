@@ -32,7 +32,7 @@ public class BlogController {
 	public PageUtils opentList(@RequestParam Map<String, Object> params) {
 		// 查询列表数据
 		Query query = new Query(params);
-
+		query.put("status", 1);//只显示上线发表的博客
 		List<ContentDO> bContentList = bContentService.list(query);
 		int total = bContentService.count(query);
 
