@@ -22,7 +22,7 @@ public class BuildTree {
 			if (pid == null || "0".equals(pid)) {
 				topNodes.add(children);
 
-				continue;
+				continue;  //break是结束整个循环体，continue是结束单次循环
 			}
 
 			for (Tree<T> parent : nodes) {
@@ -31,7 +31,7 @@ public class BuildTree {
 					parent.getChildren().add(children);
 					children.setHasParent(true);
 					parent.setChildren(true);
-					continue;
+					continue;   //break是结束整个循环体，continue是结束单次循环
 				}
 			}
 
@@ -52,7 +52,6 @@ public class BuildTree {
 			state.put("opened", true);
 			root.setState(state);
 		}
-
 		return root;
 	}
 

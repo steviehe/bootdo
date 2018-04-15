@@ -6,6 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import java.util.HashMap;
+
 @EnableTransactionManagement
 @ServletComponentScan
 @MapperScan("com.bootdo.*.dao")
@@ -20,5 +22,7 @@ public class BootdoApplication {
                 "  |  __'. / .'`\\ \\/ .'`\\ \\| |   | |  | |/ .'`\\ \\ \n" +
                 " _| |__) || \\__. || \\__. || |, _| |_.' /| \\__. | \n" +
                 "|_______/  '.__.'  '.__.' \\__/|______.'  '.__.'  ");
+
+
     }
 }

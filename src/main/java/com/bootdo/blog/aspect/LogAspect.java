@@ -1,4 +1,4 @@
-package com.bootdo.common.aspect;
+package com.bootdo.blog.aspect;
 
 import java.lang.reflect.Method;
 import java.util.Date;

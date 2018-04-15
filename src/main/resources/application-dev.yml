@@ -1,8 +1,6 @@
 bootdo:
   uploadPath: D:/var/uploaded_files/
-logging:
-  level:
-    com.bootdo: debug
+
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
@@ -32,3 +30,5 @@ spring:
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
     # 合并多个DruidDataSource的监控数据
     #useGlobalDataSourceStat: true
+
+activemq.url : tcp://192.168.1.111:61616
