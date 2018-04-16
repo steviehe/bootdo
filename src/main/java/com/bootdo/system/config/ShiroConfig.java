@@ -24,6 +24,11 @@ import java.util.LinkedHashMap;
 
 @Configuration
 public class ShiroConfig {
+
+	/**
+	 * 缓存管理器(CacheManager)  是属于安全管理器中的一部分，所以要在安全管理器中set进去
+	 * @return
+	 */
 	@Bean
 	public EhCacheManager getEhCacheManager() {
 		EhCacheManager em = new EhCacheManager();
@@ -50,6 +55,7 @@ public class ShiroConfig {
 		listeners.add(new BDSessionListener());
 		sessionManager.setSessionListeners(listeners);
 		sessionManager.setSessionDAO(sessionDAO());
+	//	sessionManager.setGlobalSessionTimeout(6000);  //引入了shiro 的session管理器之后可以设置session的超时时间
 		return sessionManager;
 	}
 
@@ -90,11 +96,20 @@ public class ShiroConfig {
 		return shiroFilterFactoryBean;
 	}
 
+	/**
+	 * DefaultAdvisorAutoProxyCreator是用来扫描上下文，寻找所有的Advistor(通知器），
+	 * 将这些Advisor应用到所有符合切入点的Bean中。所以必须在lifecycleBeanPostProcessor创建之后创建，所以用了depends-on=”lifecycleBeanPostProcessor”>
+	 * @return
+	 */
 	@Bean("lifecycleBeanPostProcessor")
 	public LifecycleBeanPostProcessor lifecycleBeanPostProcessor() {
 		return new LifecycleBeanPostProcessor();
 	}
 
+	/**
+	 * 扫描上下文
+	 * @return
+	 */
 	@Bean
 	public DefaultAdvisorAutoProxyCreator defaultAdvisorAutoProxyCreator() {
 		DefaultAdvisorAutoProxyCreator proxyCreator = new DefaultAdvisorAutoProxyCreator();

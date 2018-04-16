@@ -7,6 +7,7 @@ import com.bootdo.common.domain.Tree;
 import com.bootdo.common.utils.R;
 import com.bootdo.system.domain.MenuDO;
 import com.bootdo.system.service.MenuService;
+import com.bootdo.system.shiro.UserRealm;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,9 @@ public class MenuController extends BaseController {
 	String prefix = "system/menu";
 	@Autowired
 	MenuService menuService;
+
+	@Autowired
+	UserRealm userRealm;
 
 	@RequiresPermissions("sys:menu:menu")
 	@GetMapping()
@@ -66,6 +70,7 @@ public class MenuController extends BaseController {
 			return R.error(1, "演示系统不允许修改,完整体验请部署程序");
 		}
 		if (menuService.save(menu) > 0) {
+			userRealm.clearCached();    //授权结束后需要清除原来的缓存
 			return R.ok();
 		} else {
 			return R.error(1, "保存失败");
@@ -81,6 +86,7 @@ public class MenuController extends BaseController {
 			return R.error(1, "演示系统不允许修改,完整体验请部署程序");
 		}
 		if (menuService.update(menu) > 0) {
+			userRealm.clearCached();    //授权结束后需要清除原来的缓存
 			return R.ok();
 		} else {
 			return R.error(1, "更新失败");
@@ -96,6 +102,7 @@ public class MenuController extends BaseController {
 			return R.error(1, "演示系统不允许修改,完整体验请部署程序");
 		}
 		if (menuService.remove(id) > 0) {
+			userRealm.clearCached();    //授权结束后需要清除原来的缓存
 			return R.ok();
 		} else {
 			return R.error(1, "删除失败");

@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -43,6 +44,16 @@ public class UserRealm extends AuthorizingRealm {
 	}
 
 	/**
+	 * 授权结束后清除缓存
+	 */
+
+	public void clearCached(){
+		PrincipalCollection  principal = SecurityUtils.getSubject().getPrincipals();
+		super.clearCache(principal);
+	}
+
+
+	/**
 	 * 认证
 	 * @param token
 	 * @return
@@ -75,5 +86,8 @@ public class UserRealm extends AuthorizingRealm {
 		SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user, password, getName());
 		return info;
 	}
+
+
+
 
 }
