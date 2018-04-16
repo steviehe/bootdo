@@ -36,6 +36,9 @@ public class MqConfig {
         return bean;
     }
 
+    public static void main(String[] args) {
+        System.out.println("ssss");
+    }
     /**
      * 设置重发策略
      * @return
