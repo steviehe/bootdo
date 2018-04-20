@@ -1,5 +1,6 @@
 package com.bootdo.common.quartz.factory;
 
+
 import org.quartz.spi.TriggerFiredBundle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
@@ -8,6 +9,11 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.scheduling.quartz.AdaptableJobFactory;
 import org.springframework.scheduling.quartz.SpringBeanJobFactory;
 import org.springframework.stereotype.Component;
+
+/**
+ *  配置job交给spring管理
+ *  主要目的就是解决job类 注入其他service或者使用Spring组件
+ */
 @Component
 public class JobFactory extends AdaptableJobFactory {
     @Autowired 

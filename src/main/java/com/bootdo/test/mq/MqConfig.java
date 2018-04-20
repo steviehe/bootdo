@@ -37,7 +37,7 @@ public class MqConfig {
     }
 
     public static void main(String[] args) {
-        System.out.println("ssss");
+        System.out.println("ssssddddddd");
     }
     /**
      * 设置重发策略
